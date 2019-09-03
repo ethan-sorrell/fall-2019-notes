@@ -35,3 +35,92 @@
   - awareness and training
   - audit and accountability
   - certification, acreditation and security assessments
+* Chapter 2
+** Cryptography vs. Security
+- Theory vs Practice
+- Tools vs. Applications
+- etc
+** Symmetric Encryption
+- Also referred to as conventional encryption or single-key encryption
+*** Two requirements for secure use:
+- Strong encryption algorithm
+- Sender and receiver must have obtained copies of the secret key in a secure fashion
+** Attacking Symmetric Encryption
+** Data Encryption Standard (DES)
+*** Triple DES (3DES)
+** Advanced Encryption Standard (AES)
+** Practical Security Issues
+- Typically encryption is applied to a unit  of data larger than e.g. a single 64-bit block
+- Electronic codebook (ECB) mode is the simplest approach to multiple-block encryption
+  - Each block is encrypted using the same key
+  - Regularities in the plaintext may be exploitable
+- Modes of operation
+  - Alternative technique developed to increase security for symmetric block encryption of large sequences
+  - Overcomes the weaknesses of ECB
+** Block Ciphers
+- Processes the input one block of elements at a time
+- Produces separate output block for each input block
+- Can reuse keys
+- More common (than stream cipher?)
+** Stream Ciphers
+- Processes the input elements continuously
+- Primary advantage is that this form of cipher is faster and uses less code
+- Pseudorandom stream is one that is unpredictable without knowledge of the input key
+** Public-Key Encryption Structure
+- Asymmetric
+  - Uses two separate keys
+  - Public key and private key
+  - Some form of protocol is needed for distribution
+- See slides for diagram
+- Each user has a public and private key
+- Use intended receiver's public key to encrypt, They use their private key to decrypt
+- Or the opposite
+- e.g. PGP is Public Key Encryption
+** RSA
+** Requirements for Public-Key Cryptosystems
+- Computationally easy to:
+  - create key pairs
+  - encrypt message given public key
+  - decrypt ciphertext knowing private key
+- Computationally infeasible to:
+  - recover original message without private key
+  - determine private key from public key
+- Also useful if either key can be used for either role
+** Asymmetric Encryption Algorithms
+** Symmetric vs Public Key
+** Message Authentication
+** Hash Function Requirements
+- Can be applied to any size block of data
+- Produces a fixed-length output
+- Relatively easy to compute for any input
+- One way or pre-image resistant (not reversible to get input)
+- Second pre-image resistant or weak collision resistant
+  - Computationally infeasible to find input which will hash to the same value as given input
+- Collision resistant or strong collision resistance
+  - Computationally infeasible to find any pair of inputs that will hash to the same value
+Note the distinction between weak collision resistant and strong collision resistant 
+** Security of Hash Functions
+- SHA most widely used hash algorithm
+*** Additional secure hash function applications:
+- Password
+  - Hash of a password is stored rather than password itself
+- Intrusion detection
+  - Store H(F) for each file on a system and secure the hash values
+  - Now possible to detect manipulation by recomputing hash values
+*** Two approaches to attacking a secure hash function
+- Cryptanalysis
+- Brute-force
+** Digital Signatures
+- Think PGP
+** Digital Envelopes
+- Rather than using public key to encrypt message, encrypt a symmetric key using public key, and send message encrypted with this symmetric key
+- This is useful as symmetric key encryption is quicker
+** Random Numbers Uses
+- Keys for public-key algorithms
+- Stream key for symmetric stream cipher
+- Symmetric key for use in e.g. creating a digital envelope
+- Handshaking to prevent replay attack
+- Session key
+** Practical Application: Encryption of Stored Data
+- Common to encrypt transmitted data
+- Much less common to encrypt stored data
