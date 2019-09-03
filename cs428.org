@@ -1,0 +1,37 @@
+* Chapter 1
+** The CIA Triad
+- Confidentiality
+  - Preserving intended restrictions on information access
+- Integrity
+  - Guarding against improper information modification or destruction
+- Availability
+  - Ensuring timely and reliable access to information
+** Additional Security Concepts
+- Authenticity
+- Accountability
+** Challenges
+- Only one vulnerability needs to be found by attacker,
+  defender must patch all vulnerabilities
+** Categories of Vulnerabilities
+- Corrupted (loss of integrity)
+- Leaky (loss of confidentiality)
+- Unavailable (loss of availability)
+** Categories of Attacks
+- Passive
+  - attempt to learn or make use of information from the system that does not affect system resources
+- Active
+  - attempt to alter system resources or affect their operation
+- Insider
+  - initiated by an entity within the security perimeter
+- Outsider
+  - initiated by an entity outside of the security perimeter
+** Security Functional Requirements
+- Security technical measures
+  - required to deal with access control problems
+  - identification and authentication
+  - system and communication protection
+  - system and information integrity
+- Management controls and procedures
+  - awareness and training
+  - audit and accountability
+  - certification, acreditation and security assessments

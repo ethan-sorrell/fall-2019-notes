@@ -1,0 +1,25 @@
+* Test 1
+** Sensor Classifications
+- Proprioceptive
+  - Sense of self
+- Exteroceptive
+  - External Environment
+  - Includes things like GPS, compass
+- Active
+  - emits energy
+  - e.g. radar
+- Passive
+  - receives energy
+  - e.g. microphone
+** Wheel/motor Sensors
+- Optical encoders
+  - Measure speed and position associated with wheels/motor
+- Incremental (Quadrature) encoders
+  - Can help differentiate forward/backward motion (which is not possible with only one sensor)
+- Odometry
+  - Wheel movement can be used to estimate the robots position/change in position
+** Heading sensors
+- Heading sensors can be proprioceptive (gyroscope) or exteroceptive (compass)
+- Used to determine orientation
+- Together with velocity information it can help us estimate movement/position
+- Dead reckoning
