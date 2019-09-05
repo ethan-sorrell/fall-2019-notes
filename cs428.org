@@ -1,4 +1,4 @@
-* Chapter 1
+* Chapter 1: Overview
 ** The CIA Triad
 - Confidentiality
   - Preserving intended restrictions on information access
@@ -35,7 +35,7 @@
   - awareness and training
   - audit and accountability
   - certification, acreditation and security assessments
-* Chapter 2
+* Chapter 2: Cryptographic Tools
 ** Cryptography vs. Security
 - Theory vs Practice
 - Tools vs. Applications
@@ -46,9 +46,31 @@
 - Strong encryption algorithm
 - Sender and receiver must have obtained copies of the secret key in a secure fashion
 ** Attacking Symmetric Encryption
+- Broadly divided into cryptanalytic and brute-force attacks
+- Crypt analytic exploits weaknesses in the algorithm
+- A more critical possibility:
+  - Stealing the keys from memory or disk
+** Table 2.1
+|                              | DES | Triple DES |              AES |
+|------------------------------+-----+------------+------------------|
+| Plaintext block size (bits)  |  64 |         64 |              128 |
+| Ciphertext block size (bits) |  64 |         64 |              128 |
+| Key size (bits)              |  56 | 112 or 168 | 128, 192, or 256 |
+|------------------------------+-----+------------+------------------|
 ** Data Encryption Standard (DES)
+- Most widely used encryption scheme
+- Uses 64 bit plaintext block and 56 bit key to produce 64 bit ciphertext block
+- Use of 56-bit key is strength concern:
+  - EEF announced in July 1998 it had broken a DES encryption
+- See diagram in slides
 *** Triple DES (3DES)
+- Repeat DES algorithm three times
+- First standardized for use in finance in ANSI standard X9.17 in 1985
+- Sluggish performance
 ** Advanced Encryption Standard (AES)
+- NIST called for proposals for a new AES in 1997
+- Selected Rijndael in November 2001
+- See diagram in slides
 ** Practical Security Issues
 - Typically encryption is applied to a unit  of data larger than e.g. a single 64-bit block
 - Electronic codebook (ECB) mode is the simplest approach to multiple-block encryption
@@ -77,6 +99,12 @@
 - Or the opposite
 - e.g. PGP is Public Key Encryption
 ** RSA
+- to encrypt a message M, the sender:
+  - obtains public key of recipient: {e, n}
+  - computes: C = M^e mod n where 0 <= M < n
+- to decrypt the ciphertext C, the owner:
+  - uses their private key: {d, n}
+  - computes: M = C^d mod n
 ** Requirements for Public-Key Cryptosystems
 - Computationally easy to:
   - create key pairs
@@ -87,7 +115,27 @@
   - determine private key from public key
 - Also useful if either key can be used for either role
 ** Asymmetric Encryption Algorithms
+- RSA (Rivest, Shamir, Adleman)
+  - Developed in 1977
+  - Most widely accepted and implemented approach to public-key encryption
+  - Block cipher in which the plaintext and ciphertext are integers between 0 and n-1
+- Diffie-Hellman key exchange
+  - Enables two users to securely reach agreement about a shared secret that can be used as a secret key for subsequent symmetric encryption of messages
+  - Limited to the exchange of keys
+- Digital Signature Standard (DSS)
+  - Provides only a digital signature function with SHA-1
+  - Cannot be used for encryption or key exchange
+- Elliptic Curve Cryptography (ECC)
+  - Security like RSA, but with much smaller keys
+** Table 2.3
+| Algorithm      | Digital Signature | Symmetric Key Distribution | Encryption of Secret Keys |
+|----------------+-------------------+----------------------------+---------------------------|
+| RSA            | Yes               | Yes                        | Yes                       |
+| Diffie-Hellman | No                | Yes                        | No                        |
+| DSS            | Yes               | No                         | No                        |
+| Elliptic Curve | Yes               | Yes                        | Yes                       |
 ** Symmetric vs Public Key
+- Conventional Encryption
 ** Message Authentication
 ** Hash Function Requirements
 - Can be applied to any size block of data
@@ -124,3 +172,39 @@ Note the distinction between weak collision resistant and strong collision resis
 ** Practical Application: Encryption of Stored Data
 - Common to encrypt transmitted data
 - Much less common to encrypt stored data
+* Chapter 10: Buffer Overflow
+** Buffer Overflow
+- A very common attack mechanism
+- Known prevention techniques
+- A buffer overflow, also known as buffer overrun defined:
+  - A condition at an interface under which more input can be placed into a buffer than the capacity allocated, overwriting other information. Exploited to crash a system, or insert carefully crafted code to gain control of the system.
+** Buffer Overflow Basics
+- A process attempts to store data beyond the limits of a fixed-sized buffer
+- Overwrites adjacent memory locations
+- Buffer could be located on the stack, in the heap, or in the data section of the process
+** Programs and Processes
+| Kernel Code and Data  |
+| Stack                 |
+| Spare Memory          |
+| Heap                  |
+| Global Data           |
+| Program Machine Code  |
+| Process Control Block |
+** Buffer Overflow Attacks
+- The exploit a buffer overflow an attacker needs:
+  - To identify a buffer overflow vulnerability in some program that can be triggered using data under the attacker's control
+  - To understand how that buffer is stored in memory and determine potential for corruption
+- Identifying vulnerable programs can be done by:
+  - Inspection of program source
+  - Tracing the execution of programs as they process over-sized input
+  - Using tools such as fuzzing to automatically identify potential vulnerabilities
+** Programming Language History
+- At the machine level, data manipulated by machine instructions much be stored in either the processor's registers or in memory
+- Assembly language program is responsible for the correct interpretation of any saved data value
+** Stack Buffer Overflows 
+- Occur when overflown buffer is located on stack
+  - Also referred to as stack smashing
+- Still being widely exploited
+- Stack frame
+  - Stores return address when one function calls another function
+  - Also needs location to save passed parameters and possible save register values

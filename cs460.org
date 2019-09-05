@@ -1,4 +1,44 @@
 * Test 1
+** Three D's
+- Dull
+- Dirty
+- Dangerous
+** Three Types of Terrain
+- UAV :: aerial
+- UGV :: ground
+- UUV :: underwater
+** Sensor Space
+- All possible input values readable by sensor
+** State Space
+- Distinguished from sensor space. Incorporates sensor data
+- Distinguished by internal vs external
+- Internal state stored as representation or internal model. Includes anything remembered
+- Could be partially or fully observable
+** Autonomy
+- Sensing and acting
+** Action
+- Achieved through *actuators* driving *effectors*
+- Typically for either:
+  - Locomottion
+  - Manipulation
+- Note that nature-inspired locomotion is difficult to implement
+** Wheels
+- 3 wheels is sufficient for stability
+- more than 3 wheels requires suspension
+*** 4 types of wheels
+1. Castor wheels
+2. Swedish wheels
+3. Spherical wheels
+4. Standard wheels
+** Other Locomotion Types
+- Tracks
+- Wheels
+- Legs
+- Aerial
+** Uses of Perception
+- Modeling
+- Monitoring
+- Surveillance
 ** Sensor Classifications
 - Proprioceptive
   - Sense of self
@@ -23,3 +63,28 @@
 - Used to determine orientation
 - Together with velocity information it can help us estimate movement/position
 - Dead reckoning
+*** Hall-effect Compass
+- Small and inexpensive
+- Poor resolution
+- Slow
+*** Flux gate compass
+- High resolution
+- More accurate
+- Larger
+- More expensive
+*** Magnetic Compass
+- Sensitive to magnetic interference
+*** Mechanical Gyroscope
+- Preserve orientation to a fixed reference frame
+- Provides absolute measure for heading
+- Angular momentum associated within a spinning wheel keeps the axis stable
+  - This allows measurement of a system relative to where it started
+*** Optical Gyroscopes
+- First commercially used in early 80s in airplanes to measure angular speed
+- Two laser beams shot from a single source (clockwise and counterclockwise)
+- Laser beam traveling in direction of rotation has slightly shorter path
+- Difference in frequency is proportional to angular velocity
+** Sensors in Shakey
+- camera
+- bumper - cat whiskers
+- radio
