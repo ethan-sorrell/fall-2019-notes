@@ -1,3 +1,4 @@
+- Quiz on 9/17
 * Test 1
 ** Three D's
 - Dull
@@ -88,3 +89,22 @@
 - camera
 - bumper - cat whiskers
 - radio
+** Kinematics
+- How mechanical systems behave
+- Why do we need to understand mechanical behavior?
+  - Understand how to create control software
+- Used for position and motion estimation
+- Key differences between manipulator robots and mobile robots
+  - There is no direct way to measure a mobile robot's position instantaneously
+- Motion estimation can be inaccurate and is subject to error via slippage
+- Deriving a model for the whole robot's motion is a bottom-up process
+- Each wheel (for instance) contributes to the robot's motion
+** Kinematics (cont)
+- Establish relationship between global reference frame and local reference frame
+- Local (robot) reference frame:
+  - Describe position on the plane and orientation {X_R, Y_R, \theta}
+- Global reference frame:
+  - Described by axes and some origin O {X_I, Y_I}
+- Angular difference between global and reference frames is \theta
+- Point P is the robot in the global reference {x, y}
+- The *orthogonal rotation matrix* (ORM) R(\theta) is used to handle mappings between global and local reference frame

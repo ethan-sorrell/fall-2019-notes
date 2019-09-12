@@ -183,13 +183,21 @@ Note the distinction between weak collision resistant and strong collision resis
 - Overwrites adjacent memory locations
 - Buffer could be located on the stack, in the heap, or in the data section of the process
 ** Programs and Processes
+|-----------------------|
 | Kernel Code and Data  |
+|-----------------------|
 | Stack                 |
+|-----------------------|
 | Spare Memory          |
+|-----------------------|
 | Heap                  |
+|-----------------------|
 | Global Data           |
+|-----------------------|
 | Program Machine Code  |
+|-----------------------|
 | Process Control Block |
+|-----------------------|
 ** Buffer Overflow Attacks
 - The exploit a buffer overflow an attacker needs:
   - To identify a buffer overflow vulnerability in some program that can be triggered using data under the attacker's control
