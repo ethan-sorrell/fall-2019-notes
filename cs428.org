@@ -216,3 +216,146 @@ Note the distinction between weak collision resistant and strong collision resis
 - Stack frame
   - Stores return address when one function calls another function
   - Also needs location to save passed parameters and possible save register values
+- See slides about mechanisms
+** some Common Unsafe C Standard Library Routines
+| Function                                  | Description                                           |
+|-------------------------------------------+-------------------------------------------------------|
+| gets(char *str)                           | read line from standard input into str                |
+| sprintf(char *str, char *format, ...)     | create str according to supplied format and var       |
+| strcat(char *dest, char *src)             | append contents of string src to string dest          |
+| strcpy(char *dest, char *src)             | copy contents of string src to string dest            |
+| vsprintf(char *str, char *ft, va_list ap) | create str according to supplied format and variables |
+** Shellcode
+- Code supplied by attacker
+  - often saved in buffer before being overflowed
+  - traditionally transfer control to a shell interpreter (e.g. call execve("/bin/sh")
+- Machine code
+- Metasploit Project
+** Shellcode Development
+- Shellcode must
+  - marshall arguement for execve() and call it
+  - include all code to invoke system function
+  - be position-independent
+  - not contain NULLs (C string terminator)
+** x86 Registers
+** Stack Overflow variants
+- Target program can be:
+  - A trusted system utility
+  - Network service daemon
+  - Commonly used library code
+- Shellcode functions
+  - Launch a remote shell
+  - Create a reverse shell that connects back to hacker
+  - Use local exploits that establish a shell
+  - Flush firewall rules that block other attacks
+  - Break out of chroot env, giving full access to system
+** Buffer Overflow Defenses
+- Two broad approaches:
+  - Compile-time: Aim to harden programs to resist attacks in new programs
+  - Run-time: Aim to detect and abort attacks in existing programs
+** Compile-time Defenses: Programming Languages
+- Use a modern high-level language
+- Languages which don't require manual memory management
+  - Trade off performance for safety
+** Compile-Time Defense: Safe coding techniques
+- Emphasis on type safety, code inspection, and code auditing.
+** Compile-Time Defense: Lnaguage Extensions/Safe Libraries
+- Replace unsafe standard library routines with safer variants
+- E.g. Libsafe for C
+** Compile-Time Defense: Stack Protection
+- Add funciton entry and exit code to hceck stack for signs of corruption
+- Random candary
+- Stackshield and Return Address Defender (RAD)
+  - GCC extensions that include additional function entry and exit code (checks?)
+  - Function entry writes a copy of return address to a safe region of memory
+  - Function exit checks return address in stack frame against saved copy
+** Run-Time Defenses: Executable Address Space Protection
+- Use virtual memory to make some regions of memory non-executable
+- Issues:
+  - Support for executable stack code
+  - Special provisions are needed: (e.g. nested function in C, Linux signal handlers)
+** Run-Time Defenses: Address Space Randomization
+- Manipulate location of key data structures
+- Use random shift for each process
+- Randomize location of heap buffers
+- Randomize location of standard library functions
+** Run-Time Defense: Guard Pages
+- Place guard pages between critical regions of memory
+  - Flagged in MMU as illegal addresses
+  - Attempted access aborts process
+- Further extension places guard pages between stack frames and heap buffers
+** Other Overflow attacks
+- Stack overflow variants
+- Heap overflow
+- Global data overflow
+- Format string overflow
+- Integer overflow
+** Replacement Stack Frame
+** Return to System Call
+- Stack overflow variant:
+  - Replaces return address with standard library function
+- We've discusses several possible defenses
+** Heap Overflow
+- Attack buffer located in heap
+  - Typically located above program code
+  - Memory is requested by programs to use in dynamic data structures
+- No return address
+  - Hence no easy transfer of control
+  - May have function pointers that can be exploited
+- Defenses:
+  - Make heap non-executable
+  - Randomize the allocation of memory on the heap
+** Global Data Overflow
+- Can attack buffer located in global data
+  - may be located above program code
+  - could have function pointers or adjacent process management tables
+  - aim to overwrite function pointers which will later be called
+- Defenses
+  - non-executable or random global data region
+  - move function pointers
+  - guard pages
+* Chapter 3: User Authentication
+** Authentication Process
+- Basis for access control and user accountability
+- Identification Step
+  - Presenting an identifier to the security system
+- Verification Step
+  - Presenting or generating authentication information
+  - Corroborates the binding between the entity and the identifier
+** Four mean of authenticating identity
+- Something the individual knows (e.g. PIN, password)
+- Something the individual possesses (token) (e.g. physical key)
+- Something the individual is (static biometrics) (e.g. fingerprint)
+- Something the individual does (dynamic biometrics) (e.g. handwriting, voice)
+** Risk assessment for User Authentication
+- Three Concepts
+- Assurance Level
+  - Potential Impact
+    - Areas of Risk
+** Assurance Level
+- Degree of confidence in the vetting process used to establish identity
+- Four Levels:
+  1. Little or no confidence
+  2. Some confidence
+  3. High confidence
+  4. Very high confidence
+** Potential Impact
+- Three levels
+  1. Low - limited adverse effect
+  2. Moderate - serious adverse effect
+  3. High - severe or catastrophic adverse effect
+** Password Authentication
+- Widely used 
+- User ID:
+  - Determines user's privilege
+  - Part of discretionary access control
+** Password Vulnerabilities
+- Offline Dictionary Attack
+- Specific account attack
+- Popular password attack
+- Password guessing against single user
+** Countermeasures
+- prevent unauthorized access to password file
+- intrusion detection
+- hasty re-issuance of compromised passwords
+- account lockout mechanism on repeated failed login attempts
