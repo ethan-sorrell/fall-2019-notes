@@ -359,3 +359,35 @@ Note the distinction between weak collision resistant and strong collision resis
 - intrusion detection
 - hasty re-issuance of compromised passwords
 - account lockout mechanism on repeated failed login attempts
+- policies to inhibit users from selecting common passwords
+- automatic workstation logout
+** Purpose of Salt
+- Prevent password duplicates from being visible in encrypted passwords
+- increase difficulty of offline dictionary attack
+** Original Unix implementation
+- password as the key of DES
+- Up to 8 characters in length
+- 12-bit salt used to modify DES encryption into a one-way hash function
+- zero value repeatedly encrypted 25 times
+  - why 25 times ?
+- output translated to 11 character sequence
+- now considered inadequate
+** Improved Unix Implementation
+** Password Cracking   
+- Dictionary attack
+- Rainbow table attack
+  - pre-compute tables of hash values for all salts
+- Password crackers exploit the fact that people choose easily guessable passwords
+- John the Ripper
+  - Open-source password cracker
+  - Uses a combination of brute-force and dictionary techniques
+** Modern Approaches
+- Complex password policies
+** Password File Access Control
+** Password Selection Strategies
+** Proactive Password Checking
+** Bloom Filter
+- Uses k hash functions to map a password to k bits
+- These bits are then all set to 1
+- If a checked password has all 1s in the table, it may be present
+- Otherwise, it is known to not be present

@@ -1,4 +1,3 @@
-- Quiz on 9/17
 * Test 1
 ** Three D's
 - Dull
