@@ -1,0 +1,33 @@
+* Number Systems
+[[docview:math572-lecture-notes/NumberSystems.pdf::2][commutative ring and non-commutative ring]]
+[[docview:math572-lecture-notes/NumberSystems.pdf::6][unit]]
+[[docview:math572-lecture-notes/NumberSystems.pdf::6][field]]
+- Fundamental Theorem of Algebra
+* Elementary Matrices
+[[docview:math572-lecture-notes/Elementary%20Matrices.pdf::3][general linear group]]
+* Over other rings
+- Smith Normal Form
+[[docview:math572-lecture-notes/Over%20other%20rings.pdf::1][integral domain]]
+[[docview:math572-lecture-notes/Over%20other%20rings.pdf::5][Euclidean domain]]
+* Vector Spaces and Modules
+[[docview:math572-lecture-notes/ModulesIntro.pdf::3][module]]
+[[docview:math572-lecture-notes/ModulesIntro.pdf::4][linear combination]]
+[[docview:math572-lecture-notes/ModulesIntro.pdf::4][vector space and vectors]]
+* Examples of Modules
+[[docview:math572-lecture-notes/Examples%20of%20modules.pdf::2][projection map and coordinate]]
+[[docview:math572-lecture-notes/Examples%20of%20modules.pdf::3][module product]]
+* Submodules
+[[docview:math572-lecture-notes/Sub-modules.pdf::1][submodule]]
+- subspace
+[[docview:math572-lecture-notes/Sub-modules.pdf::2][direct sum]]
+[[docview:math572-lecture-notes/Sub-modules.pdf::2][span]]
+[[docview:math572-lecture-notes/Sub-modules.pdf::3][ideal and principal ideal]]
+* Linear Transformations and Module Homomorphisms
+[[docview:math572-lecture-notes/Linear%20Transformations%20and%20Homomorphisms.pdf::1][homomorphism and linear transformation]]
+[[docview:math572-lecture-notes/Linear%20Transformations%20and%20Homomorphisms.pdf::2][kernel]]
+[[docview:math572-lecture-notes/Linear%20Transformations%20and%20Homomorphisms.pdf::2][image]]
+[[docview:math572-lecture-notes/Linear%20Transformations%20and%20Homomorphisms.pdf::2][surjective injective bijective]]
+- sequences
+[[docview:math572-lecture-notes/Linear%20Transformations%20and%20Homomorphisms.pdf::3][exact / exactness]]
+[[docview:math572-lecture-notes/Linear%20Transformations%20and%20Homomorphisms.pdf::4][endomorphism and automorphism]]
+- linear operators
